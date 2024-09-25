@@ -1,0 +1,60 @@
+{{ $section := .section }}
+{{ $currentSection := .currentSection }}
+{{ $currentRelPermalink := .currentRelPermalink }}
+{{ $depth := .depth | int }}
+{{ if eq $depth 0 }}
+  {{ if ne $section.Params.sidebar false }}
+    <gcds-nav-link
+      href="{{ $section.Permalink }}"
+      {{ if eq $section.RelPermalink $currentRelPermalink }}
+        current="true"
+      {{ end }}>
+      {{ $section.Title }}
+    </gcds-nav-link>
+  {{ end }}
+  {{ range $section.Pages }}
+    {{ if ne .Params.sidebar false }}
+      {{ partial "side-navigation-recursive.html" (dict "section" . "currentSection" $currentSection "currentRelPermalink" $currentRelPermalink "depth" (add $depth 1)) }}
+    {{ end }}
+  {{ end }}
+{{ else }}
+  {{ if $section.Pages }}
+    <gcds-nav-group
+      open-trigger="{{ $section.Title }}"
+      menu-label="{{ $section.Title }}"
+      {{ if or (eq $section.RelPermalink $currentRelPermalink) (in $currentRelPermalink $section.RelPermalink) }}
+        open
+      {{ end }}>
+      {{ if ne $section.Params.sidebar false }}
+        <gcds-nav-link
+          href="{{ $section.Permalink }}"
+          {{ if eq $section.RelPermalink $currentRelPermalink }}
+            current="true"
+          {{ end }}>
+          {{ $section.Title }}
+        </gcds-nav-link>
+      {{ end }}
+      {{ range $section.Pages }}
+        {{ if ne .Params.sidebar false }}
+          <gcds-nav-link
+            href="{{ .Permalink }}"
+            {{ if eq .RelPermalink $currentRelPermalink }}
+              current="true"
+            {{ end }}>
+            {{ .Title }}
+          </gcds-nav-link>
+        {{ end }}
+      {{ end }}
+    </gcds-nav-group>
+  {{ else }}
+    {{ if ne $section.Params.sidebar false }}
+      <gcds-nav-link
+        href="{{ $section.Permalink }}"
+        {{ if eq $section.RelPermalink $currentRelPermalink }}
+          current="true"
+        {{ end }}>
+        {{ $section.Title }}
+      </gcds-nav-link>
+    {{ end }}
+  {{ end }}
+{{ end }}

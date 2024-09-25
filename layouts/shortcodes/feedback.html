@@ -1,0 +1,15 @@
+<section data-pagefind-ignore="" class="pt-100 mt-400 mb-600 bt-sm b-dark">
+  <h2 class="mt-300 mb-400">
+    {{ .Get "heading" }}
+  </h2>
+  <p class="mb-400">
+    {{ .Get "paragraph" }}
+  </p>
+  <gcds-button
+    type="link"
+    button-role="secondary"
+    href="{{ .Get "buttonLink" }}"
+    class="hydrated">
+    {{ .Get "buttonText" }}
+  </gcds-button>
+</section>

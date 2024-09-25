@@ -1,0 +1,30 @@
+<form
+  class="my-500 contact-us-form"
+  name="contact"
+  method="post"
+  style="min-height: 32rem;"
+  action="{{ .Get "action" }}">
+  <input type="hidden" name="form-name" value="contact" />
+  <input name="honeypot" type="text" aria-label="bot" hidden />
+  <gcds-input
+    type="text"
+    name="name"
+    input-id="name"
+    label="{{ .Get "name" }}"
+    size="30"
+    autocomplete="name"
+    required></gcds-input>
+  <gcds-input
+    type="email"
+    name="email"
+    input-id="email"
+    label="{{ .Get "email" }}"
+    size="50"
+    autocomplete="email"
+    required></gcds-input>
+  <gcds-textarea
+    name="message"
+    label="{{ .Get "message" }}"
+    textarea-id="message"></gcds-textarea>
+  <gcds-button button-role="primary" type="submit">Submit</gcds-button>
+</form>

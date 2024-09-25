@@ -1,0 +1,12 @@
+{{- $summary := "" }}
+{{- $open := false }}
+{{- if .IsNamedParams }}
+  {{- $summary = .Get "summary" }}
+  {{- with .Get "open" }}{{ $open = . }}{{ end }}
+{{- else }}
+  {{- $summary = .Get 0 }}
+  {{- with .Get 1 }}{{ $open = . }}{{ end }}
+{{- end }}
+<gcds-details details-title="{{ $summary }}" {{ if $open }}open{{ end }}>
+  {{ .Inner }}
+</gcds-details>

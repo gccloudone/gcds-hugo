@@ -1,0 +1,26 @@
+<gcds-top-nav slot="menu" label="Top navigation" alignment="right">
+  {{ $currentURL := (replace .RelPermalink "/" "" -1) }}
+  {{ range .Site.Menus.main }}
+    {{ $menuURL := (replace .URL "/" "" -1) }}
+    {{ $isActive := eq $currentURL $menuURL }}
+    {{ if .HasChildren }}
+      <gcds-nav-group open-trigger="{{ .Name }}" menu-label="{{ .Name }}">
+        {{ range .Children }}
+          {{ $childMenuURL := (replace .URL "/" "" -1) }}
+          <gcds-nav-link
+            href="{{ .URL }}"
+            {{ if eq $currentURL $childMenuURL }}current{{ end }}>
+            {{ .Name }}
+          </gcds-nav-link>
+        {{ end }}
+      </gcds-nav-group>
+    {{ else }}
+      <gcds-nav-link
+        href="{{ .URL }}"
+        slot="{{ if eq .Identifier "home" }}home{{ end }}"
+        {{ if $isActive }}current{{ end }}>
+        {{ with .Pre }}{{ . }}{{ end }}{{ .Name }}
+      </gcds-nav-link>
+    {{ end }}
+  {{ end }}
+</gcds-top-nav>

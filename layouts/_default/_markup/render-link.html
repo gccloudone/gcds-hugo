@@ -1,0 +1,7 @@
+<!-- For more information, visit: https://design-system.alpha.canada.ca/en/components/link/ -->
+<gcds-link
+  href="{{ .Destination | safeURL }}"
+  {{- with .Title }}title="{{ . }}"{{ end -}}>
+  {{- with .Text }}{{ . }}{{ end -}}
+</gcds-link>
+{{- /* chomp trailing newline */ -}}

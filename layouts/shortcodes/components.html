@@ -1,0 +1,26 @@
+<article class="py-450">
+  <h2 class="mb-400">Featured component</h2>
+  {{- $pages := where .Site.Pages "Section" "components" -}}
+  {{- $filteredPages := where $pages "IsNode" false -}}
+  {{- range first 4 (shuffle $filteredPages) -}}
+    <article class="component-item">
+      <h3 class="mb-400">{{ .Title }}</h3>
+      {{ with .Params.description }}
+        <p class="mb-450">{{ . }}</p>
+      {{ else }}
+        <p class="mb-450">No description available.</p>
+      {{ end }}
+      {{ with .Params.image }}
+        <img
+          class="d-block mb-450"
+          src="{{ . }}"
+          width="200"
+          height="200"
+          alt="" />
+      {{ end }}
+      <gcds-link href="{{ .Permalink }}" class="hydrated"
+        >Read more about {{ .Title }}</gcds-link
+      >
+    </article>
+  {{ end }}
+</article>

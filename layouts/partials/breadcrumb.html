@@ -1,0 +1,13 @@
+<!-- For more information, visit: https://design-system.alpha.canada.ca/en/components/breadcrumbs/ -->
+<gcds-breadcrumbs slot="breadcrumb">
+  {{- range .Ancestors.Reverse }}
+    <gcds-breadcrumbs-item href="{{ .RelPermalink }}"
+      >{{ .Title }}</gcds-breadcrumbs-item
+    >
+  {{- end }}
+  {{- if not .IsHome }}
+    <gcds-breadcrumbs-item href="{{ .RelPermalink }}"
+      >{{ .Title }}</gcds-breadcrumbs-item
+    >
+  {{- end }}
+</gcds-breadcrumbs>
