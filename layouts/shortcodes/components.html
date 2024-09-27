@@ -1,5 +1,5 @@
 <article class="py-450">
-  <h2 class="mb-400">Featured component</h2>
+  <h2 class="mb-400">{{ i18n "components_heading" | default "Featured component" }}</h2>
   {{- $pages := where .Site.Pages "Section" "components" -}}
   {{- $filteredPages := where $pages "IsNode" false -}}
   {{- range first 4 (shuffle $filteredPages) -}}
@@ -8,7 +8,7 @@
       {{ with .Params.description }}
         <p class="mb-450">{{ . }}</p>
       {{ else }}
-        <p class="mb-450">No description available.</p>
+        <p class="mb-450">{{ i18n "components_no_description" | default "No description available." }}</p>
       {{ end }}
       {{ with .Params.image }}
         <img
@@ -19,7 +19,7 @@
           alt="" />
       {{ end }}
       <gcds-link href="{{ .Permalink }}" class="hydrated"
-        >Read more about {{ .Title }}</gcds-link
+        >{{ i18n "components_read_more" | default "Read more about" }} {{ .Title }}</gcds-link
       >
     </article>
   {{ end }}

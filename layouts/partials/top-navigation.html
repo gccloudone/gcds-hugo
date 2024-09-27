@@ -18,7 +18,7 @@
       <gcds-nav-link
         href="{{ .URL }}"
         slot="{{ if eq .Identifier "home" }}home{{ end }}"
-        {{ if $isActive }}current{{ end }}>
+        {{ if and $isActive (not (eq .Identifier "home")) }}current{{ end }}>
         {{ with .Pre }}{{ . }}{{ end }}{{ .Name }}
       </gcds-nav-link>
     {{ end }}
