@@ -1,10 +1,19 @@
 <!-- For more information, visit: https://design-system.alpha.canada.ca/en/components/breadcrumbs/ -->
 <gcds-breadcrumbs slot="breadcrumb">
+
+  {{ $breadcrumbs := .Site.Menus.breadcrumb }}
+  {{ with index $breadcrumbs 0 }}
+    <gcds-breadcrumbs-item href="{{ .URL }}"
+      >{{ .Name }}</gcds-breadcrumbs-item
+    >
+  {{ end }}
+
   {{- range .Ancestors.Reverse }}
     <gcds-breadcrumbs-item href="{{ .RelPermalink }}"
       >{{ .Title }}</gcds-breadcrumbs-item
     >
   {{- end }}
+
   {{- if not .IsHome }}
     <gcds-breadcrumbs-item href="{{ .RelPermalink }}"
       >{{ .Title }}</gcds-breadcrumbs-item
