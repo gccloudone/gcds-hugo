@@ -1,0 +1,32 @@
+############# English navigation ##############
+
+# main menu
+[[main]]
+name = "GCDS Hugo"
+url = "/"
+weight = 1
+identifier = "home"
+
+[[main]]
+name = "About"
+url = "/about"
+weight = 2
+
+[[main]]
+name = "Contact Us"
+url = "/contact"
+weight = 3
+
+[[main]]
+name = "Get involved"
+url = "/get-involved"
+weight = 3
+
+[[main]]
+weight = 4
+name = "Examples"
+
+  [[main]]
+  parent = "Examples"
+  name = "GCDS Components"
+  url = "/gcds-components"
