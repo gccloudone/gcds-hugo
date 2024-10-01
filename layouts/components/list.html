@@ -31,13 +31,15 @@
           <gcds-grid tag="ul" columns="1fr" columns-tablet="1fr 1fr" columns-desktop="1fr 1fr 1fr" gap="400" class="hydrated">
               {{- $pages := where .Site.Pages "Section" "components" -}}
               {{- $filteredPages := where $pages "IsNode" false -}}
-              {{- range first 4 (shuffle $filteredPages) -}}
-              <gcds-card card-title="{{ .Title }}" href="{{ .Permalink }}" card-title-tag="h3" badge="Core" img-src="{{ with .Params.image }}{{ . }}{{ end }}" img-alt="" role="listitem" class="hydrated">
+              {{- range shuffle $filteredPages -}}
+              <gcds-card card-title="{{ .Title }}" href="{{ .Permalink }}" card-title-tag="h3" badge="{{ with .Params.type }}{{ . }}{{ end }}" img-src="{{ with .Params.image }}{{ . }}{{ end }}" img-alt="" role="listitem" class="hydrated">
                 {{ with .Params.description }}
                 <gcds-text class="hydrated">{{ . }}</gcds-text>
                 {{ end }}
                 <gcds-text text-role="secondary" size="caption" margin-bottom="0" class="hydrated">
-                  <em>Other names: breadcrumb trail.</em>
+                  {{ with .Params.alias }}
+                  <em>Other names: {{ . }}</em>
+                  {{ end }}
                 </gcds-text>
               </gcds-card>
               {{ end }}

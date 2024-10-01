@@ -2,7 +2,7 @@
   <h2 class="mb-400">{{ i18n "components_heading" | default "Featured component" }}</h2>
   {{- $pages := where .Site.Pages "Section" "components" -}}
   {{- $filteredPages := where $pages "IsNode" false -}}
-  {{- range first 4 (shuffle $filteredPages) -}}
+  {{- range first 1 (shuffle $filteredPages) -}}
     <article class="component-item">
       <h3 class="mb-400">{{ .Title }}</h3>
       {{ with .Params.description }}
