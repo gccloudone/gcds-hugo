@@ -31,15 +31,15 @@
     <!-- GC Design System -->
     <link
       rel="stylesheet"
-      href="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@0.25.1/dist/gcds/gcds.css" />
+      href="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@0.26.3/dist/gcds/gcds.css" />
     <script
       async
       type="module"
-      src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@0.25.1/dist/gcds/gcds.esm.js"></script>
+      src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@0.26.3/dist/gcds/gcds.esm.js"></script>
     <script
       async
       nomodule
-      src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@0.25.1/dist/gcds/gcds.js"></script>
+      src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@0.26.3/dist/gcds/gcds.js"></script>
 
     {{ $styles := resources.Get "scss/main.scss" | resources.ToCSS }}
     <link rel="stylesheet" href="{{ $styles.Permalink }}" />
