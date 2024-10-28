@@ -24,6 +24,15 @@
       {{ end }}
       <section class="mb-400">
         {{ partial "heading" . }}
+        {{ $showToc := or .Params.showToc .Site.Params.showToc }}
+        {{ if and $showToc .TableOfContents }}
+        <gcds-fieldset
+          fieldset-id="field-toc"
+          legend=""
+          class="mb-400">
+            {{ .TableOfContents }}
+          </gcds-fieldset>
+        {{ end }}
         {{ $content := .Content | replaceRE "<p>(.*?)</p>" "<gcds-text character-limit=\"false\">$1</gcds-text>" }}
         {{ $content | safeHTML }}
         {{ partial "date-modified" . }}

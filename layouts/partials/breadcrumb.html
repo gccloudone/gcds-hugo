@@ -8,12 +8,12 @@
   {{ end }}
   {{- range .Ancestors.Reverse }}
     <gcds-breadcrumbs-item href="{{ .RelPermalink }}"
-      >{{ .Title }}</gcds-breadcrumbs-item
+      >{{ .LinkTitle }}</gcds-breadcrumbs-item
     >
   {{- end }}
   {{- if not .IsHome }}
     <gcds-breadcrumbs-item href="{{ .RelPermalink }}"
-      >{{ .Title }}</gcds-breadcrumbs-item
+      >{{ .LinkTitle }}</gcds-breadcrumbs-item
     >
   {{- end }}
 </gcds-breadcrumbs>
