@@ -26,7 +26,7 @@
         {{ partial "heading" . }}
         {{ $content := .Content | replaceRE "<p>(.*?)</p>" "<gcds-text character-limit=\"false\">$1</gcds-text>" }}
         {{ $content | safeHTML }}
-        <gcds-heading tag="h2">Browse Components</gcds-heading>
+        <gcds-heading tag="h2">{{ i18n "components_browse" | default "Browse Components" }}</gcds-heading>
         <div class="my-500">
           <gcds-grid tag="ul" columns="1fr" columns-tablet="1fr 1fr" columns-desktop="1fr 1fr 1fr" gap="400" class="hydrated">
               {{- $pages := where .Site.Pages "Section" "components" -}}
