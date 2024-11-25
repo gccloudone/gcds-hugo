@@ -2,6 +2,6 @@
 <gcds-link
   href="{{ .Destination | safeURL }}"
   {{- with .Title }}title="{{ . }}"{{ end -}}>
-  {{- with .Text }}{{ . }}{{ end -}}
+  {{- with .Text }}{{ . | safeHTML }}{{ end -}}
 </gcds-link>
 {{- /* chomp trailing newline */ -}}
