@@ -2,7 +2,7 @@ version: "3.3"
 
 services:
   site:
-    image: gccloudone/aurora
+    image: gccloudone/gcds-hugo
     build:
       context: .
     command: server
