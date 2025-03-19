@@ -1,6 +1,9 @@
-<!-- For more information, visit: https://design-system.alpha.canada.ca/en/components/side-navigation/ -->
 <gcds-side-nav label="Navigation">
   {{ range .Site.Sections }}
-    {{ partial "side-navigation-recursive.html" (dict "section" . "currentSection" .CurrentSection "currentRelPermalink" $.RelPermalink "depth" 0) }}
+    {{ $currentSectionPermalink := .Permalink | strings.TrimPrefix .Site.BaseURL | strings.TrimPrefix "/" | strings.TrimSuffix "/" }}
+    {{ $currentRelPermalink := $.RelPermalink | strings.TrimPrefix "/" | strings.TrimSuffix "/" }}
+    {{ if hasPrefix $currentRelPermalink $currentSectionPermalink }}
+      {{ partial "side-navigation-recursive.html" (dict "section" . "currentSection" .CurrentSection "currentRelPermalink" $.RelPermalink "depth" 0) }}
+    {{ end }}
   {{ end }}
 </gcds-side-nav>
