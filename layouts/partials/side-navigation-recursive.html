@@ -20,8 +20,8 @@
 {{ else }}
   {{ if $section.Pages }}
     <gcds-nav-group
-      open-trigger="{{ $section.Title | default $section.Title }}"
-      menu-label="{{ $section.Title | default $section.Title }}"
+      open-trigger="{{ $section.LinkTitle | default $section.Title }}"
+      menu-label="{{ $section.LinkTitle | default $section.Title }}"
       {{ if or (eq $section.RelPermalink $currentRelPermalink) (in $currentRelPermalink $section.RelPermalink) }}
         open
       {{ end }}>
