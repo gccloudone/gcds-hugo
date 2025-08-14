@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.1.1
+
+### Fixed
+
+- "head-end" and "body-end" hooks were not called.
+
 ## v0.1.0
 
 - Updates GC Design System to 0.41.0
