@@ -1,4 +1,5 @@
-<gcds-side-nav label="Navigation">
+{{ $section := .Site.GetPage "section" .Section}}
+<gcds-side-nav label="{{ $section.Title }}">
   {{ range .Site.Sections }}
     {{ $currentSectionPermalink := .Permalink | strings.TrimPrefix .Site.BaseURL | strings.TrimPrefix "/" | strings.TrimSuffix "/" }}
     {{ $currentRelPermalink := $.RelPermalink | strings.TrimPrefix "/" | strings.TrimSuffix "/" }}

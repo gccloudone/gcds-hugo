@@ -1,3 +1,5 @@
 <!-- For more information, visit: https://design-system.alpha.canada.ca/en/components/heading/ -->
 <gcds-heading tag="h1">{{ .Title }}</gcds-heading>
+{{- if .IsHome -}}
 {{ with .Description }}<p>{{ . }}</p>{{ end }}
+{{- end -}}

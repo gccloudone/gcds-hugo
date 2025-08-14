@@ -24,6 +24,8 @@
       {{ end }}
       <section class="mb-400">
         {{ partial "heading" . }}
+        {{ $intro := .Params.Intro | markdownify | replaceRE "<p>(.*?)</p>" "<gcds-text character-limit=\"false\">$1</gcds-text>" }}
+        {{ $intro | safeHTML }}
         {{ $showToc := or .Params.showToc .Site.Params.showToc }}
         {{ if and $showToc .TableOfContents }}
         <gcds-fieldset

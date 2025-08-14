@@ -4,7 +4,9 @@
   lang-href="{{ (index .Translations 0).Permalink }}"
   signature-variant="colour"
   skip-to-href="#">
+  {{- if not .Site.Params.hide_search -}}
   {{ partial "search" . }}
+  {{- end -}}
   {{ partial "top-navigation" . }}
   {{ partial "breadcrumb" . }}
 </gcds-header>
