@@ -1,7 +1,9 @@
 <!-- For more information, visit: https://design-system.alpha.canada.ca/en/components/footer/ -->
 <gcds-footer
   lang="{{ .Lang }}"
-  display="compact"
-  contextual-heading="{{ index site.Data.footer .Lang "heading" }}"
-  contextual-links="{{ index site.Data.footer .Lang "links" | jsonify }}">
+  display="{{ .Site.Params.footer_display | default "full" }}"
+  {{ if site.Menus.contextual }}
+  contextual-heading="{{ .Site.Title }}"
+  {{ end }}
+  contextual-links="{ {{ range $indx, $link := site.Menus.contextual }}{{ if gt $indx 0 }},{{ end }}{{ printf "%q" $link.Name }}: {{ printf "%q" $link.URL }}{{ end }} }">
 </gcds-footer>

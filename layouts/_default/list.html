@@ -35,6 +35,20 @@
         {{ end }}
         {{ $content := .Content | replaceRE "<p>(.*?)</p>" "<gcds-text character-limit=\"false\">$1</gcds-text>" }}
         {{ $content | safeHTML }}
+
+        {{- if not $showSidebar -}}
+        <gcds-grid tag="section" columns-desktop="1fr 1fr 1fr" columns-tablet="1fr 1fr" columns="1fr">
+          {{- range .Pages }}
+          {{- if not .Params.hide }}
+          <article>
+            <a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
+            <p class="mt-0">{{ .Description | default (.Render "summary") }}</p>
+          </article>
+          {{- end }}
+          {{- end }}
+        </gcds-grid>
+        {{- end -}}
+
         {{ partial "date-modified" . }}
       </section>
     </gcds-grid>

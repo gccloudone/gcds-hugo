@@ -1,3 +1,5 @@
+{{- if .Site.Params.alpha_notice }}
 <gcds-container centered size="md">
   <gcds-text size="caption"  style="text-align: center;"><strong>Alpha</strong>&nbsp;&nbsp;{{ i18n "alpha_message" | default "This is an experimental service." }}</gcds-text>
 </gcds-container>
+{{- end }}

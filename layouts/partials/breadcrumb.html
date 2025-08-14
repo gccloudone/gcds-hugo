@@ -11,9 +11,4 @@
       >{{ .LinkTitle }}</gcds-breadcrumbs-item
     >
   {{- end }}
-  {{- if not .IsHome }}
-    <gcds-breadcrumbs-item href="{{ .RelPermalink }}"
-      >{{ .LinkTitle }}</gcds-breadcrumbs-item
-    >
-  {{- end }}
 </gcds-breadcrumbs>

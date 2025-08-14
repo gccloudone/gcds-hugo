@@ -7,42 +7,22 @@
       content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
 
     <title>
-      {{ block "title" . }}{{ .Title }} | {{ .Site.Title }}{{ end }}
+      {{ block "title" . }}{{ if not .IsHome }}{{ .Title }} | {{ end }}{{ .Site.Title }}{{ end }}
     </title>
 
     <link rel="icon" href="{{ "/favicon.ico" | relURL }}" type="image/x-icon" />
 
     <!-- Icons Font Awesome -->
-    <link
-      rel="preload"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-      as="style"
-      crossorigin="anonymous" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-      crossorigin="anonymous" />
-
-    <!-- GC Design System Utility -->
-    <link
-      rel="stylesheet"
-      href="https://design-system.alpha.canada.ca/gcds-utility.min.css" />
+    {{ partial "assets/font-awesome.html" }}
 
     <!-- GC Design System -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@0.26.3/dist/gcds/gcds.css" />
-    <script
-      async
-      type="module"
-      src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@0.26.3/dist/gcds/gcds.esm.js"></script>
-    <script
-      async
-      nomodule
-      src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@0.26.3/dist/gcds/gcds.js"></script>
+    {{ partial "assets/design-system.html" }}
 
-    {{ $styles := resources.Get "scss/main.scss" | resources.ToCSS }}
+    {{ $styles := resources.Get "scss/main.scss" | css.Sass }}
     <link rel="stylesheet" href="{{ $styles.Permalink }}" />
+
+    {{ $customStyles := resources.Get "scss/custom.scss" | css.Sass }}
+    <link rel="stylesheet" href="{{ $customStyles.Permalink }}" />
 
     <style>
       html {
