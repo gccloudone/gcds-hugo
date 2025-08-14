@@ -37,11 +37,15 @@
         animation: fade 0.05s forwards ease-in-out;
       }
     </style>
+
+    {{ partial "hooks/head-end.html" . -}}
   </head>
   <body style="margin: 0">
     <main>
       {{ block "main" . }}{{ end }}
     </main>
     {{ partial "footer" . }}
+
+    {{ partial "hooks/body-end.html" . -}}
   </body>
 </html>
