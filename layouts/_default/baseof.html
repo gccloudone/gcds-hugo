@@ -13,7 +13,7 @@
     <link rel="icon" href="{{ "/favicon.ico" | relURL }}" type="image/x-icon" />
 
     {{ partial "analytics" . }}
-    
+
     <!-- Icons Font Awesome -->
     {{ partial "assets/font-awesome.html" }}
 
@@ -42,7 +42,7 @@
 
     {{ partial "hooks/head-end.html" . -}}
   </head>
-  <body style="margin: 0">
+  <body style="margin: 0" {{ if (not (.Page.Params.disableCharacterLimit | default .Page.Site.Params.disableCharacterLimit)) }}class="character-limit"{{ end }}>
     <main>
       {{ block "main" . }}{{ end }}
     </main>
