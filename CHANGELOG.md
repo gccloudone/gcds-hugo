@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.2.0
+
+- Align character-limit with GC Design System recommendations by default.
+
+  To remove the character limit, set `disableCharacterlimit` to `true`
+  on a page's params or globally with the site's params.
+
 ## v0.1.1
 
 ### Fixed

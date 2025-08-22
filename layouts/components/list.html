@@ -24,7 +24,7 @@
       {{ end }}
       <section class="mb-400">
         {{ partial "heading" . }}
-        {{ $content := .Content | replaceRE "<p>(.*?)</p>" "<gcds-text character-limit=\"false\">$1</gcds-text>" }}
+        {{ $content := .Content | replaceRE `(?s:<p>(.*?)</p>)` (printf "<gcds-text character-limit=\"%v\">$1</gcds-text>" (not (.Page.Params.disableCharacterLimit | default .Site.Params.disableCharacterLimit))) }}
         {{ $content | safeHTML }}
         <gcds-heading tag="h2">{{ i18n "components_browse" | default "Browse Components" }}</gcds-heading>
         <div class="my-500">
