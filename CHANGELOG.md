@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.2.1
+
+- Updates GC Design System to 0.42.0
+- Added a global style for handling blockquotes
+
 ## v0.2.0
 
 - Align character-limit with GC Design System recommendations by default.
