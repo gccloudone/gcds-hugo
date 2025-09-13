@@ -3,6 +3,7 @@
 ## v.2.2
 
 - All Pilcrow functionality to headers
+- Add markdownlint-cli2
 
 ## v0.2.1
 
