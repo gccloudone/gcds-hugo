@@ -9,4 +9,3 @@ require (
 
 // Debugging the Theme in-tree
 // replace github.com/gccloudone/gcds-hugo => ../
-replace github.com/gccloudone/gcds-hugo => ../
