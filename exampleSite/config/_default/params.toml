@@ -2,4 +2,4 @@ sidebar = true
 alpha_notice = true
 footer_display = "compact"
 disableCharacterLimit = false
-disablePilcrow = false
+disablePilcrow = true
