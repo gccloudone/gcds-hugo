@@ -1,5 +1,9 @@
 # Changelog
 
+## v.2.2
+
+- All Pilcrow functionality to headers
+
 ## v0.2.1
 
 - Updates GC Design System to 0.42.0
