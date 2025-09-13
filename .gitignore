@@ -5,5 +5,4 @@ resources/
 .hugo_build.lock
 _vendor
 hugo_stats.json
-package-lock.json
 go.sum

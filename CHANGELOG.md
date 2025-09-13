@@ -24,10 +24,10 @@
 - Use the GC Design System Utility from the CDN instead of from the
   documentation site
 - Removes the current page from the breadcrumb to align with
-  https://design.canada.ca/common-design-patterns/breadcrumb-trail.html
+  <https://design.canada.ca/common-design-patterns/breadcrumb-trail.html>
 - Adds an "alert" shortcode for displaying alerts.
 - Add hooks for "head-end" and "body-end" to allow implementations to
-  inject additional resources at the end of the <head> and <body>
+  inject additional resources at the end of the `<head>` and `<body>`
   sections.
 - Menu parameters is now used to setup the `home` slot, which resolves
   issues when the site was not hosted at the root url.
