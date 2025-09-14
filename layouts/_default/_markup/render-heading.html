@@ -1,4 +1,9 @@
 <!-- For more information, visit: https://design-system.alpha.canada.ca/en/components/heading/ -->
 <gcds-heading tag="h{{ .Level }}" id="{{ .Anchor }}" character-limit="{{ not (.Page.Params.disableCharacterLimit | default .Page.Site.Params.disableCharacterLimit) }}">
   {{- .Text -}}
+  {{- if (.Page.Params.enablePilcrow | default .Page.Site.Params.enablePilcrow) -}}
+    <gcds-link href="#{{ .Anchor }}" class="pilcrow">¶</gcds-link>
+  {{- else -}}
+    <gcds-link href="#{{ .Anchor }}"></gcds-link>
+  {{- end -}}
 </gcds-heading>
