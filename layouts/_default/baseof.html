@@ -1,5 +1,7 @@
 <!doctype html>
-<html dir="ltr" lang="en">
+<html itemscope itemtype="http://schema.org/WebPage"
+    {{- with .Site.Language.LanguageDirection }} dir="{{ . }}" {{- end -}}
+    {{ with .Site.Language.Lang }} lang="{{ . }}" {{- end }}>
   <head>
     <meta charset="utf-8" />
     <meta

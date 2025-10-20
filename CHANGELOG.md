@@ -1,6 +1,10 @@
 # Changelog
 
-## v.2.2
+## v0.2.3
+
+- Added dynamic language and language direction rendering to themes base layout
+
+## v0.2.2
 
 - All Pilcrow functionality to headers
 - Add markdownlint-cli2
