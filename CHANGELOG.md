@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.2.4
+
+- Switch from gcds-utility to gcds-css-shortcuts to reflect the rename from GC Design System.
+
 ## v0.2.3
 
 - Added dynamic language and language direction rendering to themes base layout
