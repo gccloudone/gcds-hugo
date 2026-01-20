@@ -1,0 +1,13 @@
+{{/*  <gcds-notice class="my-300" type="danger" notice-title="Avis de traduction" notice-title-tag="h2">
+  <gcds-text character-limit="{{ not (.Page.Params.disableCharacterLimit | default .Page.Site.Params.disableCharacterLimit) }}">
+    Veuillez noter que ce document est actuellement en cours de développement actif et pourrait être sujet à des révisions. 
+    Une fois terminé, il sera entièrement traduit en français et mis à disposition dans sa version finale.
+  </gcds-text>
+</gcds-notice>  */}}
+
+<gcds-alert class="my-300" alert-role="danger" heading="Avis de traduction" hide-close-btn="true">
+  <gcds-text character-limit="{{ not (.Page.Params.disableCharacterLimit | default .Page.Site.Params.disableCharacterLimit) }}">
+    Veuillez noter que ce document est actuellement en cours de développement actif et pourrait être sujet à des révisions. 
+    Une fois terminé, il sera entièrement traduit en français et mis à disposition dans sa version finale.
+  </gcds-text>
+</gcds-alert>
