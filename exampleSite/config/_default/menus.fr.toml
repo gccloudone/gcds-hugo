@@ -1,0 +1,32 @@
+############# English navigation ##############
+
+# main menu
+[[main]]
+name = "GCDS Hugo"
+pageRef = "/"
+weight = 1
+identifier = "home"
+
+[[main]]
+name = "A Propos"
+pageRef = "/a-propos"
+weight = 2
+
+[[main]]
+name = "Contactez Nous"
+pageRef = "/contactez-nous"
+weight = 3
+
+[[main]]
+name = "Impliquez-vous"
+pageRef = "/impliquez-vous"
+weight = 3
+
+[[main]]
+weight = 4
+name = "Exemples"
+
+  [[main]]
+  parent = "Exemples"
+  name = "Composantes GCDS"
+  pageRef = "/composantes-gcds"
