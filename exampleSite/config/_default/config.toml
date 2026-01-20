@@ -16,6 +16,9 @@ defaultContentLanguage = 'splash'
 # defaultContentLanguageInSubdir need to be true if you want to use the language code as a subdirectory and language specific 404 page
 defaultContentLanguageInSubdir = true
 
+enableGitInfo = true
+enableEmoji = true
+disableHugoGeneratorInject = true
 
 ########################## Permalinks ############################
 [permalinks.page]
@@ -76,6 +79,11 @@ maxAge = "720h"
 [markup]
 [markup.goldmark.renderer]
 unsafe = true
+
+# Enable Markdown Attributes for Block elements
+# https://gohugo.io/content-management/markdown-attributes/
+[markup.goldmark.parser]
+block = true
 
 [markup.highlight]
 style = 'monokai' # see https://xyproto.github.io/splash/docs/all.html
