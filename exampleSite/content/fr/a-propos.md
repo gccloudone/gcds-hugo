@@ -1,8 +1,10 @@
 ---
-title: "About us"
+title: "A Propos"
+description: "Voici une page pour decrir le site/equipe"
 date: 2023-10-25
 draft: false
 sidebar: false
+translationKey: about-us
 ---
 
 Lorem ipsum dolor sit amet, *consectetur adipiscing elit*.
@@ -11,18 +13,18 @@ Integer **vehicula** tortor non lacus ultricies, sed laoreet nunc aliquam.
 
 Suspendisse potenti. Vivamus viverra, nisl at egestas volutpat, ligula purus pretium nisl, sit amet tempus lorem sapien id nisi.
 
-## Subheading Example
+## Exemple de Sous-Titre
 
 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
 totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
 
-### Bullet List
+### Liste a Puces
 
 - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 - Nulla facilisi. Cras tincidunt, ipsum at scelerisque eleifend, odio arcu posuere nulla.
 - Fusce lacinia lacus ut **libero tristique** fermentum.
 
-### Numbered List
+### Liste Numérotée
 
 1. Praesent eget justo ac lacus vulputate accumsan.
 2. Curabitur pretium felis a nunc tincidunt, in cursus orci faucibus.
@@ -30,7 +32,7 @@ totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architec
 
 > “Neque porro quisquam est qui dolorem ipsum quia dolor sit amet.”
 
-## Another Section
+## Une Autre Section
 
 Curabitur a nibh vitae odio gravida gravida. Proin sed suscipit leo, a posuere sem.
 Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;

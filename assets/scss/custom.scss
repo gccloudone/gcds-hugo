@@ -45,3 +45,38 @@
     width: 80%;
   }
 }
+
+div.highlight {
+  pre {
+    font-size: 80%;
+    margin-bottom: 1em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+
+    code {
+      span {
+        span {
+          line-height: 110%;
+        }
+        
+      }
+    }
+  }
+}
+
+body.character-limit div.highlight {
+  width: var(--gcds-text-character-limit);
+}
+
+:not(pre) > code {
+  background-color: lightgrey;
+  padding: 0 5px;
+}
+
+table.full-width {
+  width: 100%;
+}
+
+body.character-limit table.full-width {
+  width: var(--gcds-text-character-limit);
+}

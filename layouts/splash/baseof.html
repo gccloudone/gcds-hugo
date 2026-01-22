@@ -1,0 +1,49 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+
+    <title>
+      {{ block "title" . }}{{ if not .IsHome }}{{ .Title }} | {{ end }}{{ .Site.Title }}{{ end }}
+    </title>
+
+    <link rel="icon" href="{{ "/favicon.ico" | relURL }}" type="image/x-icon" />
+
+    <!-- Icons Font Awesome -->
+    {{ partial "assets/font-awesome.html" }}
+
+    <!-- GC Design System -->
+    {{ partial "assets/design-system.html" }}
+
+    {{ $styles := resources.Get "scss/main.scss" | css.Sass }}
+    <link rel="stylesheet" href="{{ $styles.Permalink }}" />
+
+    {{ $customStyles := resources.Get "scss/custom.scss" | css.Sass }}
+    <link rel="stylesheet" href="{{ $customStyles.Permalink }}" />
+
+    <style>
+      html {
+        font-size: 16px;
+      }
+      body {
+        font-size: var(--gcds-font-sizes-text);
+        line-height: var(--gcds-line-heights-text);
+        color: var(--gcds-color-grayscale-1000);
+        font-family: var(--gcds-font-families-body), sans-serif;
+        margin: 0;
+        animation: fade 0.05s forwards ease-in-out;
+      }
+    </style>
+
+    {{ partial "hooks/head-end.html" . -}}
+  </head>
+  <body style="margin: 0" class="splash-page {{ if (not (.Page.Params.disableCharacterLimit | default .Page.Site.Params.disableCharacterLimit)) }}character-limit{{ end }}">
+    <main>
+      {{ block "main" . }}{{ end }}
+    </main>
+    {{ partial "hooks/body-end.html" . -}}
+  </body>
+</html>
