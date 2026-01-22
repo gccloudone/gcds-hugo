@@ -22,7 +22,7 @@ disableHugoGeneratorInject = true
 
 ########################## Permalinks ############################
 [permalinks.page]
-"pages" = "/:slugorfilename/"
+"pages" = "/:slugorcontentbasename/"
 
 ############################# Modules ############################
 [module]
@@ -82,7 +82,7 @@ unsafe = true
 
 # Enable Markdown Attributes for Block elements
 # https://gohugo.io/content-management/markdown-attributes/
-[markup.goldmark.parser]
+[markup.goldmark.parser.attribute]
 block = true
 
 [markup.highlight]
