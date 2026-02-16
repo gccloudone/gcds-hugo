@@ -8,20 +8,20 @@ weight = 1
 identifier = "home"
 
 [[main]]
-name = "About"
-pageRef = "/about-us"
+name = "A Propos"
+pageRef = "/a-propos"
 weight = 2
 
 [[main]]
-name = "Contact Us"
-pageRef = "/contact"
+name = "Contactez Nous"
+pageRef = "/contactez-nous"
 weight = 3
 
 [[main]]
 weight = 4
-name = "Examples"
+name = "Exemples"
 
   [[main]]
-  parent = "Examples"
-  name = "GCDS Components"
-  pageRef = "/gcds-components"
+  parent = "Exemples"
+  name = "Composantes GCDS"
+  pageRef = "/composantes-gcds"

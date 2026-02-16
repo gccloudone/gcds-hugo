@@ -1,0 +1,24 @@
+<table class="d-table bt-sm bx-sm mb-300 {{ .Attributes.class }}">
+  <thead>
+    {{- range .THead }}
+      <tr class="d-table-row bg-light font-bold">
+        {{- range . }}
+          <td class="d-table-cell bb-md px-100{{ with .Alignment }} {{ printf "text-%s" . }}{{ end }}">
+            {{- .Text -}}
+          </td>
+        {{- end }}
+      </tr>
+    {{- end }}
+  </thead>
+  <tbody>
+    {{- range .TBody }}
+      <tr class="d-table-row">
+        {{- range . }}
+          <td class="d-table-cell bb-sm px-100{{ with .Alignment }} {{ printf "text-%s" . }}{{ end }}">
+            {{- .Text -}}
+          </td>
+        {{- end }}
+      </tr>
+    {{- end }}
+  </tbody>
+</table>

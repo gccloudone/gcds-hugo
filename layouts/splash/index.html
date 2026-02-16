@@ -1,0 +1,56 @@
+{{ define "main" }}
+  {{ partial "verify" . }}
+
+  <gcds-container size="md" main-container centered tag="main">
+    <div class="light-bg mt-1000" id="cnt-splash">
+        <div class="gc-header">
+        <gcds-signature type="signature"></gcds-signature>
+          </div>
+      <gcds-grid
+        tag="section"
+        columns="1fr 1fr"
+        columns-desktop="1fr 1fr"
+        align-items="end"
+        class="mt-400 ms-100 me-100">
+        {{ range .AllTranslations }}
+        {{- if (eq .Language.LanguageCode "en-CA") }}
+        <section class="mb-400 text-right" lang="{{ .Language.LanguageCode }}" >
+          {{/*  <h1 class="splash-english">{{ .Title }}</h1>  */}}
+          <gcds-button type="link" href="{{ .RelPermalink }}">{{ .Language.LanguageName }}</gcds-button>
+        </section>
+        {{ end }}
+         {{- if (eq .Language.LanguageCode "fr-CA") }}
+        <section class="mb-400" lang="{{ .Language.LanguageCode }}" >
+          {{/*  <h1>{{ .Title }}</h1>  */}}
+          <gcds-button type="link" href="{{ .RelPermalink }}">{{ .Language.LanguageName }}</gcds-button>
+        </section>
+        {{ end }}
+
+        {{ end }}
+      </gcds-grid>
+
+      <div class="gc-footer">
+      <gcds-grid
+        tag="section"
+        columns="1fr 1fr"
+        columns-desktop="1fr 1fr"
+        justify-items="end"
+        >        
+
+        <div class="terms">
+          <gcds-link href="https://www.canada.ca/en/transparency/terms.html" size="small">
+          Terms & conditions
+          </gcds-link>
+          •
+          <gcds-link href="https://www.canada.ca/fr/transparence/avis.html" lang="fr" size="small">
+          Avis
+          </gcds-link>
+        </div>
+        <div>
+          <gcds-signature type="wordmark"></gcds-signature>
+        </div>
+      </gcds-grid>        
+      </div>
+    </div>
+  </gcds-container>
+{{ end }}

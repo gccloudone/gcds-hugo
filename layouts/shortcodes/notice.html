@@ -1,0 +1,6 @@
+<gcds-notice class="my-300" type="{{ .Params.type | default "info" }}" notice-title-tag="{{ .Params.titleTag | default "h2" }}" 
+  notice-title="{{ .Params.title }}">
+  <gcds-text character-limit="{{ not (.Page.Params.disableCharacterLimit | default .Page.Site.Params.disableCharacterLimit) }}">
+    {{ .Inner| .Page.RenderString}}
+  </gcds-text>
+</gcds-notice>
