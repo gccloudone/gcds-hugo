@@ -3,12 +3,14 @@
 ## v0.3.0
 
 ### Multilingual Improvements
+
 - Improved support for multilingual site configurations.
 - Added validation to ensure pages have corresponding translations (checks matching `translationKey` in front matter).
 - Splash page support when landing at the site root or when hosting environments (e.g., GitHub Pages) do not support domain-based language selection.
 - Added full layouts and background image support for splash page (splash page now functional).
 
 ### Layout & Rendering
+
 - Added additional layout components.
 - Updated content format and layout structure for better consistency.
 - Added margin to the bottom of tables via table render hook.
@@ -18,11 +20,13 @@
 - Implemented table render hook for standardized table formatting.
 
 ### Shortcodes & Content Standards
+
 - Added standardized shortcodes to improve consistency across sites.
 - Added validation to ensure no `needs-review` shortcodes remain in published content.
 - Added automated content checks via additional GitHub Action.
 
 ### Configuration & Defaults
+
 - Enabled additional Hugo functionality by default:
   - Emoji support  
   - Markdown Attributes  
