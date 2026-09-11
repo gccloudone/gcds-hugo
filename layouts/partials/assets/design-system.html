@@ -1,13 +1,17 @@
-<!-- GC Design System -->
-{{ $cssShortcutsVersion := "1.0.1" }}
-{{ $version := "0.42.0" }}
+<!--
+  GC Design System (stable v1)
+  Docs:      https://design-system.canada.ca/en/get-started/
+  Package:   https://www.npmjs.com/package/@gcds-core/components
+  Changelog: https://github.com/cds-snc/gcds-components/releases
+-->
+{{ $cssShortcutsVersion := "1.2.0" }}
+{{ $version := "1.6.0" }}
 <link
   rel="stylesheet"
-  href="https://cdn.design-system.alpha.canada.ca/@gcds-core/css-shortcuts@{{ $cssShortcutsVersion }}/dist/gcds-css-shortcuts.min.css" />
+  href="https://cdn.design-system.canada.ca/@gcds-core/css-shortcuts@{{ $cssShortcutsVersion }}/dist/gcds-css-shortcuts.min.css" />
 <link
   rel="stylesheet"
-  href="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@{{ $version }}/dist/gcds/gcds.css" />
+  href="https://cdn.design-system.canada.ca/@gcds-core/components@{{ $version }}/dist/gcds/gcds.css" />
 <script
-  async
   type="module"
-  src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@{{ $version }}/dist/gcds/gcds.esm.js"></script>
+  src="https://cdn.design-system.canada.ca/@gcds-core/components@{{ $version }}/dist/gcds/gcds.esm.js"></script>

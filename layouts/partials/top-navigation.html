@@ -1,4 +1,4 @@
-<gcds-top-nav slot="menu" label="Top navigation" alignment="right">
+<gcds-top-nav slot="menu" label="Top navigation" alignment="end">
   {{ $currentURL := (replace .RelPermalink "/" "" -1) }}
   {{ range .Site.Menus.main }}
     {{ $menuURL := (replace .URL "/" "" -1) }}

@@ -1,5 +1,40 @@
 # Changelog
 
+## Unreleased
+
+### GC Design System v1 migration
+
+- Moved from the deprecated alpha packages to the stable release:
+  - `@cdssnc/gcds-components@0.42.0` -> `@gcds-core/components@1.6.0`
+  - `@gcds-core/css-shortcuts@1.0.1` -> `1.2.0`
+  - CDN host `cdn.design-system.alpha.canada.ca` -> `cdn.design-system.canada.ca`
+- Applied the v1 API changes: `gcds-container` `layout="page"` and `alignment`, `gcds-top-nav` `alignment="end"`, `gcds-notice` `notice-role`, `gcds-text` `size="small"`; removed `signature-variant` and `fieldset-id`.
+- Dropped `tag="main"` from containers, leaving one `main` landmark per page.
+- Dropped `async` from the components script so elements register before first paint.
+
+### Fixes
+
+- Header skip link pointed at `#`; `main` now carries `id="main-content"`.
+- Body text used the removed `--gcds-color-grayscale-1000`; now `--gcds-text-primary`.
+- Hero heading rendered dark on the dark panel; now `heading-role="light"` (contrast 1.4:1 -> 17.9:1).
+- Hero's full-bleed strip used a raw palette token that v1 darkened, leaving a visible seam; now `--gcds-bg-primary`.
+- Table of contents fieldset lost its padding when `fieldset-id` was removed; now keys off a `toc` class.
+- Pages without a `title` rendered an empty `h1`; an untitled home page falls back to the site title.
+- Removed the home page page-list and the list template's `.Render "summary"` calls; with no `summary` view template they had always rendered nothing.
+
+### Developer experience
+
+- `dev.sh` and the VS Code dev server task now serve `exampleSite` against the working tree. They previously ran Hugo in the repository root, which has no content or configuration, so every page rendered empty.
+- `.gitlab-ci.yml` builds `exampleSite` as a check instead of deploying. The `pages` job published that same empty site; the theme is consumed as a Hugo module, so nothing needs publishing. Also dropped the unused `npm install` and added workflow rules to avoid duplicate pipelines.
+- Pinned Hugo 0.161.1 in CI and `theme.toml`. The previous 0.126.3 cannot build the theme at all.
+- The exampleSite sets `footer_display = "full"` so the complete Government of Canada footer is shown.
+
+### Housekeeping
+
+- Updated `static/gcds-design-system.html` for v1: `gcds-checkboxes`/`gcds-radios`, valid icon names and sizes, `card-title-tag`, `link-role`, `maxlength`. Dropped the removed `gcds-verify-banner` and `gcds-phase-banner` sections plus the Font Awesome kit and duplicate font links; added notice, signature and language toggle examples.
+- Removed the unused `.bg-light-blue` rule and the inert `color` on `.pilcrow`.
+- Pointed documentation links and `theme.toml` at the production design system site.
+
 ## v0.3.0
 
 ### Multilingual Improvements

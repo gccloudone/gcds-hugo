@@ -1,5 +1,5 @@
 sidebar = true
 alpha_notice = true
-footer_display = "compact"
+footer_display = "full"
 disableCharacterLimit = false
 enablePilcrow = true

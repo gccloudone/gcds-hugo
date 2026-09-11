@@ -1,9 +1,8 @@
-<!-- For more information, visit: https://design-system.alpha.canada.ca/en/components/header/ -->
+<!-- For more information, visit: https://design-system.canada.ca/en/components/header/ -->
 <gcds-header
   lang="{{ .Lang }}"
   lang-href="{{ (index .Translations 0).Permalink }}"
-  signature-variant="colour"
-  skip-to-href="#">
+  skip-to-href="#main-content">
   {{- if not .Site.Params.hide_search -}}
   {{ partial "search" . }}
   {{- end -}}
