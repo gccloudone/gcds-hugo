@@ -31,7 +31,7 @@
       body {
         font-size: var(--gcds-font-sizes-text);
         line-height: var(--gcds-line-heights-text);
-        color: var(--gcds-color-grayscale-1000);
+        color: var(--gcds-text-primary);
         font-family: var(--gcds-font-families-body), sans-serif;
         margin: 0;
         animation: fade 0.05s forwards ease-in-out;
@@ -41,7 +41,7 @@
     {{ partial "hooks/head-end.html" . -}}
   </head>
   <body style="margin: 0" class="splash-page {{ if (not (.Page.Params.disableCharacterLimit | default .Page.Site.Params.disableCharacterLimit)) }}character-limit{{ end }}">
-    <main>
+    <main id="main-content">
       {{ block "main" . }}{{ end }}
     </main>
     {{ partial "hooks/body-end.html" . -}}

@@ -1,5 +1,15 @@
-<!-- For more information, visit: https://design-system.alpha.canada.ca/en/components/heading/ -->
-<gcds-heading tag="h1">{{ .Title }}</gcds-heading>
+<!-- For more information, visit: https://design-system.canada.ca/en/components/heading/ -->
+{{- $title := .Title -}}
+{{- /* An untitled home page would otherwise render an empty h1. */ -}}
+{{- if and .IsHome (not $title) -}}
+  {{- $title = .Site.Title -}}
+{{- end -}}
+{{- /*
+  The home page heading sits on the dark hero panel. gcds-heading colours its
+  own inner h1, so a colour set on the host from outside the shadow tree can no
+  longer reach it; heading-role is the supported way to ask for light text.
+*/ -}}
+{{- with $title }}<gcds-heading tag="h1"{{ if $.IsHome }} heading-role="light"{{ end }}>{{ . }}</gcds-heading>{{ end }}
 {{- if .IsHome -}}
 {{ with .Description }}<p>{{ . }}</p>{{ end }}
 {{- end -}}

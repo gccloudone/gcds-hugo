@@ -1,7 +1,7 @@
 {{ define "main" }}
   {{ partial "verify" . }}
 
-  <gcds-container size="md" main-container centered tag="main">
+  <gcds-container size="md" alignment="center">
     <div class="light-bg mt-1000" id="cnt-splash">
         <div class="gc-header">
         <gcds-signature type="signature"></gcds-signature>
@@ -13,16 +13,16 @@
         align-items="end"
         class="mt-400 ms-100 me-100">
         {{ range .AllTranslations }}
-        {{- if (eq .Language.LanguageCode "en-CA") }}
-        <section class="mb-400 text-right" lang="{{ .Language.LanguageCode }}" >
+        {{- if (eq .Language.Locale "en-CA") }}
+        <section class="mb-400 text-right" lang="{{ .Language.Locale }}" >
           {{/*  <h1 class="splash-english">{{ .Title }}</h1>  */}}
-          <gcds-button type="link" href="{{ .RelPermalink }}">{{ .Language.LanguageName }}</gcds-button>
+          <gcds-button type="link" href="{{ .RelPermalink }}">{{ .Language.Label }}</gcds-button>
         </section>
         {{ end }}
-         {{- if (eq .Language.LanguageCode "fr-CA") }}
-        <section class="mb-400" lang="{{ .Language.LanguageCode }}" >
+         {{- if (eq .Language.Locale "fr-CA") }}
+        <section class="mb-400" lang="{{ .Language.Locale }}" >
           {{/*  <h1>{{ .Title }}</h1>  */}}
-          <gcds-button type="link" href="{{ .RelPermalink }}">{{ .Language.LanguageName }}</gcds-button>
+          <gcds-button type="link" href="{{ .RelPermalink }}">{{ .Language.Label }}</gcds-button>
         </section>
         {{ end }}
 

@@ -6,7 +6,7 @@ license = "MIT"
 licenselink = "https://github.com/gccloudone/gcds-hugo/blob/main/LICENSE.md"
 description = "GC Design System components are user interface building blocks that address different user objectives."
 homepage = "https://github.com/gccloudone/gcds-hugo"
-min_version = "0.126.3"
+min_version = "0.161.1"
 
 tags = [
   "government",
@@ -26,5 +26,5 @@ features = [
 
 [original]
 author = "Canadian Digital Services"
-homepage = "https://design-system.alpha.canada.ca/"
+homepage = "https://design-system.canada.ca/"
 repo = "https://github.com/cds-snc/gcds-components"

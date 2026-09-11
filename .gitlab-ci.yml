@@ -1,37 +1,48 @@
 stages:
   - build
 
+# Without this, pushing to a branch that has an open merge request runs two
+# identical pipelines for the same commit.
+workflow:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS
+      when: never
+    - if: $CI_COMMIT_BRANCH
+
 variables:
   HUGO_ENV: production
-  HUGO_VERSION: "0.126.3"
+  # Must match the version developed against. The theme does not build on older
+  # Hugo: the exampleSite permalink uses :slugorcontentbasename, and
+  # .Site.Language.LanguageDirection in baseof.html fails on 0.145 - 0.152.
+  HUGO_VERSION: "0.161.1"
   GO_VERSION: "1.22.2"
-  NODE_VERSION: "18.16.1"
+  NODE_VERSION: "22"
+  # This repository is a Hugo *theme*, not a site: it has no content/ or config
+  # of its own, so building the repository root produces an empty site. Build
+  # exampleSite instead, with the theme module replaced by this checkout. The
+  # replacement path must be absolute; a relative "../" is not resolved.
+  HUGO_MODULE_REPLACEMENTS: "github.com/gccloudone/gcds-hugo -> $CI_PROJECT_DIR"
 
-cache:
-  paths:
-    - node_modules/
-
-default:
+# The theme is consumed as a Hugo module by downstream sites; nothing is
+# published from here. This pipeline only proves the theme still builds.
+build:
+  stage: build
   image: node:${NODE_VERSION}
   before_script:
-    - echo "USING NODE ${NODE_VERSION}"
     - apt-get update && apt-get install -y curl
-    - curl -LO "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_Linux-64bit.tar.gz"
-    - tar -xvf hugo_extended_${HUGO_VERSION}_Linux-64bit.tar.gz
+    - curl -sSLO "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz"
+    - tar -xf "hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz"
     - mv hugo /usr/local/bin/
-    - rm hugo_extended_${HUGO_VERSION}_Linux-64bit.tar.gz
-    - echo "HUGO ${HUGO_VERSION} INSTALLED"
-    - curl -LO "https://dl.google.com/go/go${GO_VERSION}.linux-amd64.tar.gz"
-    - tar -C /usr/local -xzf go${GO_VERSION}.linux-amd64.tar.gz
-    - export PATH=$PATH:/usr/local/go/bin
-    - rm go${GO_VERSION}.linux-amd64.tar.gz
-    - echo "GO ${GO_VERSION} INSTALLED"
-    - npm install
-
-pages:
-  stage: build
+    - curl -sSLO "https://dl.google.com/go/go${GO_VERSION}.linux-amd64.tar.gz"
+    - tar -C /usr/local -xzf "go${GO_VERSION}.linux-amd64.tar.gz"
+    - export PATH="$PATH:/usr/local/go/bin"
+    - hugo version && go version
   script:
-    - npm run build
-  artifacts:
-    paths:
-      - public
+    - >-
+      hugo
+      --source exampleSite
+      --destination "$CI_PROJECT_DIR/public"
+      --gc
+      --minify
+      --forceSyncStatic

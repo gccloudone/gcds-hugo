@@ -6,7 +6,7 @@
 
   {{ partial "verify" . }}
   {{ partial "header" . }}
-  <gcds-container size="xl" main-container centered tag="main">
+  <gcds-container layout="page">
     <gcds-grid
       tag="section"
       columns="1fr"
@@ -36,7 +36,7 @@
                 {{ with .Params.description }}
                 <gcds-text class="hydrated">{{ . }}</gcds-text>
                 {{ end }}
-                <gcds-text text-role="secondary" size="caption" margin-bottom="0" class="hydrated">
+                <gcds-text text-role="secondary" size="small" margin-bottom="0" class="hydrated">
                   {{ with .Params.alias }}
                   <em>Other names: {{ . }}</em>
                   {{ end }}
