@@ -20,3 +20,9 @@ components_read_more: En savoir plus sur
 components_browse: Parcourir les composants
 
 alpha_message: Ceci est un service expérimental.
+
+code_copy: Copier
+code_copy_label: Copier le code dans le presse-papiers
+code_copied: Copié
+code_copy_failed: La copie a échoué. Sélectionnez le texte et copiez-le manuellement.
+code_text: Texte

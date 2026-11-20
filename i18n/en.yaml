@@ -20,3 +20,9 @@ components_read_more: Read more about
 components_browse: Browse Components
 
 alpha_message: This is an experimental service.
+
+code_copy: Copy
+code_copy_label: Copy code to clipboard
+code_copied: Copied
+code_copy_failed: Copy failed. Select the text and copy it by hand.
+code_text: Text

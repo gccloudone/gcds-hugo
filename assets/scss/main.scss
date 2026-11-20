@@ -111,3 +111,190 @@ blockquote {
 gcds-heading:hover .pilcrow {
   opacity: 1;
 }
+
+/* Content styles: tables, code blocks, figures, keyboard keys and
+   expandable sections. These live here rather than in custom.scss, so they
+   still apply when a site overrides custom.scss with its own file.
+   Avoid min(), max() and clamp() mixing units: LibSass, which Hugo uses
+   with the extended edition, can't compile them. */
+
+/* Tables.
+   Tables fill the content column, like code blocks, rather than stopping at
+   the text line length. Tables use a smaller font, so the text limit made
+   them narrower than the paragraphs around them.
+
+   Markdown tables come from layouts/_default/_markup/render-table.html and
+   keep the GC Design System utility classes it has always added (d-table,
+   bt-sm, bx-sm, bb-md, bb-sm, bg-light, font-bold, px-100, mb-300). Those
+   border classes draw in currentColor, which is near-black. The rules below
+   recolour them inside tables only; the classes are unchanged elsewhere.
+   Each rule has a type and a class, so it outranks the single-class
+   utilities without !important.
+
+   Tables written as raw HTML have no utility classes. The table:not(.d-table)
+   rules give them the same look. */
+$table-border: var(--gcds-color-grayscale-100, #d6d6d6);
+$table-header-border: var(--gcds-color-grayscale-300, #b3b3b3);
+$table-stripe-bg: var(--gcds-color-grayscale-50, #f2f2f2);
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th,
+table td {
+  vertical-align: top;
+}
+
+table th {
+  text-align: left;
+}
+
+/* Markdown tables: keep the utility classes, adjust their colours. */
+table.d-table {
+  border-color: $table-border;
+}
+
+table.d-table .d-table-cell {
+  padding-block: 0.5rem;
+}
+
+table.d-table .bb-sm {
+  border-color: $table-border;
+}
+
+table.d-table .bb-md {
+  border-color: $table-header-border;
+}
+
+/* Raw HTML tables: the same look, without the utility classes. */
+table:not(.d-table) {
+  border: 1px solid $table-border;
+  margin-bottom: var(--gcds-spacing-300, 1.5rem);
+}
+
+table:not(.d-table) th,
+table:not(.d-table) td {
+  padding: 0.5rem var(--gcds-spacing-100, 0.5rem);
+  border-bottom: 1px solid $table-border;
+}
+
+table:not(.d-table) thead th {
+  background-color: var(--gcds-bg-light, #f1f2f3);
+  font-weight: bold;
+  border-bottom: 2px solid $table-header-border;
+}
+
+/* Stripe even body rows, so the first row under the header is plain. */
+table tbody tr:nth-child(even) td {
+  background-color: $table-stripe-bg;
+}
+
+/* Code blocks: a header with a label (language or where to run it) and a
+   Copy button. Markup comes from render-codeblock.html. */
+.code-block {
+  margin: 0 0 var(--gcds-spacing-300, 1.5rem);
+  border: 1px solid var(--gcds-color-grayscale-100, #d6d6d6);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.code-block__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.25rem 0.5rem 0.25rem 0.75rem;
+  background-color: var(--gcds-color-grayscale-100, #e6e6e6);
+  border-bottom: 1px solid var(--gcds-color-grayscale-100, #d6d6d6);
+  font-size: 0.875rem;
+}
+
+.code-block__label {
+  font-weight: bold;
+}
+
+.code-block__copy {
+  font: inherit;
+  padding: 0.125rem 0.625rem;
+  border: 1px solid var(--gcds-color-grayscale-500, #7d828b);
+  border-radius: 4px;
+  background-color: var(--gcds-color-grayscale-0, #fff);
+  color: inherit;
+  cursor: pointer;
+}
+
+.code-block__copy:hover {
+  background-color: var(--gcds-color-grayscale-50, #f2f2f2);
+}
+
+.code-block__copy:focus-visible {
+  outline: 3px solid var(--gcds-focus-border, #0535d2);
+  outline-offset: 2px;
+}
+
+.code-block__copy[data-state='copied'] {
+  border-color: var(--gcds-color-green-700, #03662a);
+  color: var(--gcds-color-green-700, #03662a);
+}
+
+.code-block__copy[data-state='failed'] {
+  border-color: var(--gcds-color-red-700, #a62a1e);
+  color: var(--gcds-color-red-700, #a62a1e);
+}
+
+.code-block .highlight pre {
+  margin: 0;
+  padding: 0.75rem;
+}
+
+/* Screenshots and diagrams. Markup comes from render-image.html. */
+.figure {
+  margin: 0 0 var(--gcds-spacing-300, 1.5rem);
+  width: 100%;
+  max-width: 48rem;
+}
+
+.figure__link {
+  display: inline-block;
+}
+
+.figure__image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--gcds-color-grayscale-100, #d6d6d6);
+  border-radius: 4px;
+}
+
+.figure__caption {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--gcds-text-secondary, #43474e);
+}
+
+.inline-image {
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+/* Keyboard keys, for shortcuts such as <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>End</kbd>. */
+kbd {
+  display: inline-block;
+  padding: 0.05rem 0.4rem;
+  font-family: var(--gcds-font-families-monospace, monospace);
+  font-size: 0.875em;
+  line-height: 1.4;
+  background-color: var(--gcds-color-grayscale-50, #f2f2f2);
+  border: 1px solid var(--gcds-color-grayscale-300, #b3b3b3);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+/* Expandable sections (gcds-details) get the same space below as other blocks. */
+gcds-details {
+  display: block;
+  margin: 0 0 var(--gcds-spacing-300, 1.5rem);
+}

@@ -1,0 +1,76 @@
+{{- /*
+  Code block render hook.
+  Adds a header to every fenced code block with:
+  - a label saying what the code is or where to run it. By default the label
+    comes from the block's language (bash shows "Bash"). Override it per block
+    with a title attribute, for example ```bash {title="Ubuntu"}
+  - a Copy button. It is hidden until assets/js/code-copy.js loads, so readers
+    without JavaScript don't see a button that does nothing. baseof.html
+    loads the script.
+  A site can add a hook for one language, such as
+  render-codeblock-mermaid.html; Hugo uses it instead of this one.
+*/ -}}
+{{- $lang := .Type | lower -}}
+{{- $labels := dict
+  "bash" "Bash"
+  "sh" "Shell"
+  "shell" "Shell"
+  "zsh" "Zsh"
+  "console" "Console"
+  "powershell" "PowerShell"
+  "ps1" "PowerShell"
+  "pwsh" "PowerShell"
+  "cmd" "Command Prompt"
+  "bat" "Command Prompt"
+  "ini" "INI"
+  "toml" "TOML"
+  "yaml" "YAML"
+  "yml" "YAML"
+  "json" "JSON"
+  "hcl" "HCL"
+  "terraform" "Terraform"
+  "tf" "Terraform"
+  "go" "Go"
+  "python" "Python"
+  "py" "Python"
+  "dockerfile" "Dockerfile"
+  "sql" "SQL"
+  "html" "HTML"
+  "xml" "XML"
+  "css" "CSS"
+  "scss" "SCSS"
+  "javascript" "JavaScript"
+  "js" "JavaScript"
+  "typescript" "TypeScript"
+  "ts" "TypeScript"
+  "markdown" "Markdown"
+  "md" "Markdown"
+  "diff" "Diff"
+  "rego" "Rego"
+  "text" (i18n "code_text")
+  "txt" (i18n "code_text")
+-}}
+{{- $label := "" -}}
+{{- with .Attributes.title -}}
+  {{- $label = . -}}
+{{- else -}}
+  {{- with $lang -}}
+    {{- $label = index $labels . | default (upper .) -}}
+  {{- end -}}
+{{- end -}}
+<div class="code-block">
+  <div class="code-block__header">
+    <span class="code-block__label">{{ $label }}</span>
+    <button
+      type="button"
+      class="code-block__copy"
+      aria-label="{{ i18n "code_copy_label" }}"
+      data-label="{{ i18n "code_copy" }}"
+      data-copied="{{ i18n "code_copied" }}"
+      data-failed="{{ i18n "code_copy_failed" }}"
+      hidden>
+      {{- i18n "code_copy" -}}
+    </button>
+  </div>
+  {{- (transform.HighlightCodeBlock .).Wrapped -}}
+</div>

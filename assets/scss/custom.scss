@@ -64,21 +64,9 @@ div.highlight {
   }
 }
 
-body.character-limit div.highlight {
-  width: var(--gcds-text-character-limit);
-}
-
 :not(pre) > code {
   background-color: lightgrey;
   padding: 0 5px;
-}
-
-table.full-width {
-  width: 100%;
-}
-
-body.character-limit table.full-width {
-  width: var(--gcds-text-character-limit);
 }
 
 .highlight pre {
