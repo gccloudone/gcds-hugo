@@ -40,7 +40,9 @@
       "allowed_elements": [
         "details",
         "summary",
+        "kbd",
         "gcds-alert",
+        "gcds-details",
         "gcds-grid",
         "gcds-link",
         "gcds-top-nav",

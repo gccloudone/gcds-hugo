@@ -12,6 +12,23 @@
 - Dropped `tag="main"` from containers, leaving one `main` landmark per page.
 - Dropped `async` from the components script so elements register before first paint.
 
+### Content styles
+
+- Code blocks get a header with a label and a Copy button (`render-codeblock.html`, `assets/js/code-copy.js`). The label comes from the block's language, or from a `title` attribute: ```` ```bash {title="Ubuntu"} ````. The button text is translated (`code_copy` and related keys in `i18n/`). The button stays hidden if the script doesn't load.
+- Images on their own line become figures with a border, a caption from the image title and a link to the full-size file (`render-image.html`). **Sites must opt in** by setting `markup.goldmark.parser.wrapStandAloneImageWithinParagraph = false`, because Hugo doesn't read `markup` settings from a theme module. Without it, images render inline as before.
+- Tables fill the content column, and their borders are light grey instead of near-black. `render-table.html` keeps the GC Design System utility classes it has always added (`d-table`, `bt-sm`, `bx-sm`, `bb-md`, `bb-sm` and so on), so site CSS that targets them still matches. Their colours are adjusted inside tables only. Header cells are now `<th>` instead of `<td>`, so screen readers announce column headings. Raw HTML tables get the same look.
+- Added styles for `<kbd>` and spacing for `gcds-details`.
+- The new styles are in `main.scss`, so they still apply to sites that override `custom.scss`.
+- The exampleSite's development server sends `Cache-Control: no-store`, so style changes show without a hard refresh. The About us page shows each new element.
+
+#### Visible changes
+
+Nothing needs to change in a site's content or CSS, but pages look different:
+
+- Tables are full width by default. The `table.full-width` rules are gone; the class does nothing, so it can be removed from content.
+- Code blocks are no longer limited to the text line length (`body.character-limit div.highlight` is gone), so they line up with tables.
+- Site CSS that selects table header cells with `thead td` needs `thead th` instead.
+
 ### Fixes
 
 - Header skip link pointed at `#`; `main` now carries `id="main-content"`.

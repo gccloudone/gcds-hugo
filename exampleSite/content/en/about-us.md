@@ -32,6 +32,38 @@ totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architec
 
 > “Neque porro quisquam est qui dolorem ipsum quia dolor sit amet.”
 
+## Code, tables and images
+
+A code block gets a label from its language and a Copy button:
+
+```bash
+hugo server --source exampleSite
+```
+
+Give a block a `title` to say where to run it:
+
+```bash {title="Ubuntu"}
+sudo apt update
+```
+
+Press <kbd>Ctrl</kbd>+<kbd>C</kbd> to stop the server.
+
+| Element | Template |
+|---------|----------|
+| Tables | `render-table.html` |
+| Code blocks | `render-codeblock.html` |
+| Images | `render-image.html` |
+
+An image on its own line becomes a figure. Its title becomes the caption:
+
+![Rocky mountain peaks and a forested shore reflected in a calm turquoise lake](/images/home-hero.jpg "The home page hero image.")
+
+<gcds-details details-title="More about these templates">
+
+The templates live in `layouts/_default/_markup/`. Their styles are in `assets/scss/main.scss`.
+
+</gcds-details>
+
 ## Another Section
 
 Curabitur a nibh vitae odio gravida gravida. Proin sed suscipit leo, a posuere sem.

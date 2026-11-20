@@ -1,0 +1,26 @@
+{{- /*
+  Image render hook.
+  - An image on its own line becomes a figure. It links to the full-size file,
+    so readers can open a small screenshot at full size.
+  - The image title becomes a visible caption: ![alt text](image.png "Caption")
+  - Images inside a sentence stay inline.
+  Alt text is always kept, for screen readers.
+  Figures need this in the site's own config, because Hugo doesn't take
+  markup settings from a theme module:
+    [markup.goldmark.parser]
+      wrapStandAloneImageWithinParagraph = false
+  Without it, every image renders inline, as it did before this hook.
+*/ -}}
+{{- $src := .Destination | safeURL -}}
+{{- if .IsBlock -}}
+<figure class="figure">
+  <a class="figure__link" href="{{ $src }}">
+    <img class="figure__image" src="{{ $src }}" alt="{{ .PlainText }}" loading="lazy" decoding="async">
+  </a>
+  {{- with .Title }}
+  <figcaption class="figure__caption">{{ . }}</figcaption>
+  {{- end }}
+</figure>
+{{- else -}}
+<img class="inline-image" src="{{ $src }}" alt="{{ .PlainText }}"{{ with .Title }} title="{{ . }}"{{ end }} loading="lazy" decoding="async">
+{{- end -}}

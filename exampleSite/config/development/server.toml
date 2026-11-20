@@ -11,3 +11,12 @@ status = 404
 from = '/fr/**'
 to = '/fr/404.html'
 status = 404
+
+# Stop the browser caching pages and stylesheets while you edit locally.
+# The stylesheets are published at fixed paths (/scss/main.css,
+# /scss/custom.css), so without this a browser can keep showing old styles
+# after the SCSS changes.
+[[headers]]
+for = '/**'
+[headers.values]
+Cache-Control = 'no-store'

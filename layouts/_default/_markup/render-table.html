@@ -1,11 +1,27 @@
-<table class="d-table bt-sm bx-sm mb-300 {{ .Attributes.class }}">
+{{- /*
+  Table render hook.
+  Keeps the GC Design System utility classes this hook has always added
+  (d-table, bt-sm, bx-sm, bb-md, bb-sm and so on), so site CSS that targets
+  them still matches. Their border colours are adjusted for tables only, in
+  assets/scss/main.scss.
+  Header cells are <th>, so screen readers announce column headings.
+  Attributes on the line after a table, such as {.class-name}, still apply.
+*/ -}}
+{{- $class := "d-table bt-sm bx-sm mb-300" -}}
+{{- with .Attributes.class }}{{ $class = printf "%s %s" $class . }}{{ end -}}
+<table class="{{ $class }}"
+  {{- range $k, $v := .Attributes }}
+    {{- if and $v (ne $k "class") }}
+      {{- printf " %s=%q" $k (string $v) | safeHTMLAttr }}
+    {{- end }}
+  {{- end }}>
   <thead>
     {{- range .THead }}
       <tr class="d-table-row bg-light font-bold">
         {{- range . }}
-          <td class="d-table-cell bb-md px-100{{ with .Alignment }} {{ printf "text-%s" . }}{{ end }}">
+          <th class="d-table-cell bb-md px-100{{ with .Alignment }} {{ printf "text-%s" . }}{{ end }}">
             {{- .Text -}}
-          </td>
+          </th>
         {{- end }}
       </tr>
     {{- end }}

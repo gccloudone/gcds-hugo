@@ -80,6 +80,12 @@ maxAge = "720h"
 [markup.goldmark.renderer]
 unsafe = true
 
+[markup.goldmark.parser]
+# Lets the theme's render-image.html output a <figure>, with an optional
+# caption, for images on their own line. Hugo doesn't take markup settings
+# from a theme module, so each site sets this itself.
+wrapStandAloneImageWithinParagraph = false
+
 # Enable Markdown Attributes for Block elements
 # https://gohugo.io/content-management/markdown-attributes/
 [markup.goldmark.parser.attribute]
